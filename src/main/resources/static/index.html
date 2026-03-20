@@ -11,35 +11,31 @@
   </head>
 
   <body>
-    <nav>
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="/">DATA1700 Clicker</a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-              <a class="nav-link" href="/admin/index.html">Admin</a>
-            </div>
+    <nav class="navbar navbar-expand-lg bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">DATA1700 Clicker</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link" href="/admin/index.html">Admin view</a>
           </div>
         </div>
-      </nav>
+      </div>
     </nav>
     <div class="container">
-      <!-- TODO:; make this into a navbar-->
-
       <div class="row">
         <!-- TODO: make it such that this view is responsive to smaller screen sizes-->
-        <div class="col-6 wrapper">
+        <div class="col-md-6 wrapper">
           <div>
             <div class="xp text-center">
               <span id="xpTracker">0</span> Study XP
@@ -52,7 +48,7 @@
             </button>
           </div>
         </div>
-        <div class="col-6">
+        <div class="col-md-6">
           <div class="upgrades">
             <h2 class="text-center">Upgrades</h2>
             <div id="upgradeContainer"></div>

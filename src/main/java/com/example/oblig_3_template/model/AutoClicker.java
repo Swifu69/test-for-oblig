@@ -1,4 +1,4 @@
-package com.example.oblig_3_template.model;
+package com.example.oblig_3_template.model; // tror ikke disse skal røres
 
 public class AutoClicker {
     private Integer id;

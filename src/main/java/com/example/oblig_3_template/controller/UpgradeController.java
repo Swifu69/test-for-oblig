@@ -14,15 +14,16 @@ public class UpgradeController {
     //TODO: full CRUD and Repository
     @GetMapping
     public ResponseEntity<List<Upgrade>> getAll() {
-        List<Upgrade> upgrades = new ArrayList<>();
-        Upgrade upgrade = new Upgrade();
-        upgrade.setId(0);
+        //målet senere er at databasen skal kobles opp og disse dataene skal komme inn automatisk
+        List<Upgrade> upgrades = new ArrayList<>(); // lager liste med upgrades
+        Upgrade upgrade = new Upgrade(); //lager en ny upgrade
+        upgrade.setId(0); // setter verdier 
         upgrade.setCost(1200);
         upgrade.setName("Mechanical Keyboard");
         upgrade.setTitle("Not only are you productive, everyone within 10 meters knows it too.");
         upgrade.setCpsMulti(2);
         upgrade.setClickMulti(5);
-        upgrades.add(upgrade);
+        upgrades.add(upgrade); // legger upgraden til i upgrades
         return ResponseEntity.ok(upgrades);
     }
 

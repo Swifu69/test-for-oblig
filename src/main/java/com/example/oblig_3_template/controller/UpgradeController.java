@@ -12,7 +12,7 @@ import java.util.List;
 public class UpgradeController {
 
     //TODO: full CRUD and Repository
-    @GetMapping
+    @GetMapping //Få verdier (READ)
     public ResponseEntity<List<Upgrade>> getAll() {
         //målet senere er at databasen skal kobles opp og disse dataene skal komme inn automatisk
         List<Upgrade> upgrades = new ArrayList<>(); // lager liste med upgrades
@@ -26,5 +26,10 @@ public class UpgradeController {
         upgrades.add(upgrade); // legger upgraden til i upgrades
         return ResponseEntity.ok(upgrades);
     }
+
+    @PostMapping() // Lag verdier (Create)
+    @PutMapping() // Oppdater verdier (Update)
+    @DeleteMapping() // Slett verdier (Delete)
+
 
 }

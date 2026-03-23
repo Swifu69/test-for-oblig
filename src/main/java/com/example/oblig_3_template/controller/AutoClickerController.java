@@ -25,5 +25,7 @@ public class AutoClickerController {
         autoClickers.add(autoClicker); // legger til autoclickeren i autoclick arrayen
         return ResponseEntity.ok(autoClickers);
     }
-
+    @PostMapping() // Lag verdier (Create)
+    @PutMapping() // Oppdater verdier (Update)
+    @DeleteMapping() // Slett verdier (Delete)
 }

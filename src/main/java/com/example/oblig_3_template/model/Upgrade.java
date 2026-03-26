@@ -8,6 +8,15 @@ public class Upgrade {
     private double cpsMulti;
     private double clickMulti;
 
+    public Upgrade(Integer id, String name, int cost, String title, double cpsMulti, double clickMulti){
+        this.id = id;
+        this.name = name;
+        this.cost = cost;
+        this.title = title;
+        this.cpsMulti = cpsMulti;
+        this.clickMulti = clickMulti;
+    }
+
     public Integer getId() {
         return id;
     }

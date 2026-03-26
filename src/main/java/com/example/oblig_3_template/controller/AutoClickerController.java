@@ -24,8 +24,9 @@ public class AutoClickerController {
         autoClicker.setTitle("No one knows what you understood, but it looks impressive.");
         autoClickers.add(autoClicker); // legger til autoclickeren i autoclick arrayen
         return ResponseEntity.ok(autoClickers);
-    }
+    }/*
     @PostMapping() // Lag verdier (Create)
     @PutMapping() // Oppdater verdier (Update)
     @DeleteMapping() // Slett verdier (Delete)
+    */
 }

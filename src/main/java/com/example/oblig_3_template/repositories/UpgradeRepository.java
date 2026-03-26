@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class UpgradeRepository {
@@ -29,7 +30,16 @@ public class UpgradeRepository {
         return jdbcTemplate.query(sql,upgradeRowMapper);
     }
     public void createUpgrade(Upgrade upgrade){
-        String sql = "INSERT INTO enhancement(name,cost,title,cpsMulti,clickMulti) VALUES (?,?,?,?,?)";
+        String sql = "INSERT INTO upgrades(name,cost,title,cpsMulti,clickMulti) VALUES (?,?,?,?,?)";
         jdbcTemplate.update(sql,upgrade.getName(),upgrade.getCost(),upgrade.getTitle(),upgrade.getCpsMulti(),upgrade.getClickMulti());
+    }
+    public int updateUpgrade(Long id, Upgrade upgrade){
+        String sql = "UPDATE upgrades SET name =?,cost=?,title=?,cpsMulti=?,clickMulti=? WHERE id = ?";
+        return jdbcTemplate.update(sql,upgrade.getName(),upgrade.getCost(),upgrade.getTitle(),upgrade.getCpsMulti(),upgrade.getClickMulti(),id);
+    }
+
+    public Optional<Upgrade> getUpgradeById(Long id) {
+        //ikke lagt inn ennå
+        return null;
     }
 }

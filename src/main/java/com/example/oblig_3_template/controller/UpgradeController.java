@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import com.example.oblig_3_template.repositories.UpgradeRepository;
 
@@ -17,6 +18,24 @@ public class UpgradeController {
 
     public UpgradeController(UpgradeRepository repository) {
         this.repository = repository;
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Upgrade> getUpgradeById(@PathVariable Long id) {
+        Optional<Upgrade> upgrade = repository.getUpgradeById(id);
+        return upgrade.map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<String> updateEnhancement(
+            @PathVariable Long id, @RequestBody Upgrade upgrade) {
+        int updatedRows = repository.updateUpgrade(id, upgrade);
+        if (updatedRows > 0) {
+            return ResponseEntity.ok("Upgrade updated successfully!");
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
 /* //kommentert ut midlertidig
@@ -38,8 +57,6 @@ public class UpgradeController {
     }
     */
 /*
-    @PostMapping() // Lag verdier (Create)
-    @PutMapping() // Oppdater verdier (Update)
     @DeleteMapping() // Slett verdier (Delete)
 */
 

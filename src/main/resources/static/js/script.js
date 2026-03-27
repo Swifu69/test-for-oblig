@@ -11,6 +11,8 @@ const xppsTracker = document.getElementById("xppsTracker")
 const clickBtn = document.getElementById("clickBtn");
 const upgradeContainer = document.getElementById("upgradeContainer")
 const autoclickerContainer = document.getElementById("autoclickerContainer")
+const studentImg = document.getElementById("clickImg")
+
 
 let upgrades = [];
 let autoclickers = [];
@@ -123,11 +125,23 @@ function updateModifiers() {
         xpAutoClickerBasePerSecond += clicker.cps * gameState.autoClickerAmounts[clicker.id]
     }
     xpAutoClickerPerSecond = xpAutoClickerBasePerSecond * xpAutoClickModifier;
+
 }
 
 function updateClickerImage() {
-    //TODO: make the clicker image dynamically update based on how many xpAutoclicker per second in the game.
-    // you can make your own images or you can use the resources in /img
+    if (xpAutoClickerPerSecond >= 10000000) {
+        studentImg.src = "../img/Prof.png"
+    } else if (xpAutoClickerPerSecond >= 1000000) {
+        studentImg.src = "../img/Graduate.png"
+    } else if (xpAutoClickerPerSecond >= 100000) {
+        studentImg.src = "../img/studentCoffeeDev.png"
+    } else if (xpAutoClickerPerSecond >= 10000) {
+        studentImg.src = "../img/studentCoffeeCoffee.png"
+    } else if (xpAutoClickerPerSecond >= 1000) {
+        studentImg.src = "../img/studentCoffee.png"
+    } else {
+        studentImg.src = "../img/studentCoffee.png"
+    }
 }
 function updateEverything() {
     updateModifiers()
@@ -135,6 +149,7 @@ function updateEverything() {
     updateAutoClickers()
     updateTrackers()
     updateClickerImage()
+
 }
 
 async function init() {
@@ -159,6 +174,7 @@ async function init() {
     setInterval(function () {
         xp += xpAutoClickerBasePerSecond * xpAutoClickModifier
         updateEverything()
+        console.log(xpAutoClickerPerSecond);
     }, 1000)
 
     updateEverything()

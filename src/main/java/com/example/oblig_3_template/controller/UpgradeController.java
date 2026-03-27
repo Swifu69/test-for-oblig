@@ -54,12 +54,20 @@ public class UpgradeController {
         }
     }
 
+<<<<<<< HEAD
+
+
+
+
+/* //kommentert ut midlertidig
+=======
     @DeleteMapping("/{id}")// Slett verdier (Delete)
     public ResponseEntity<String> deleteUpgrade(@PathVariable Long id){
         repository.deleteUpgrade(id);
         return ResponseEntity.ok("Upgrade succesfully deleted");
     }
 
+>>>>>>> e7742570261207c75e2f3947ec7f1c7dac1e7753
     //TODO: full CRUD and Repository
      /*
     @GetMapping //Få verdier (READ)

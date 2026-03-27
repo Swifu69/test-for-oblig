@@ -1,46 +1,56 @@
 package com.example.oblig_3_template.controller;
 
 import com.example.oblig_3_template.model.AutoClicker;
+import com.example.oblig_3_template.repositories.AutoClickerRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/autoclickers")
 public class AutoClickerController {
 
-    //TODO: full CRUD and Repository
+    private final AutoClickerRepository repository;
+
+    public AutoClickerController(AutoClickerRepository repository) {
+        this.repository = repository;
+    }
+
     @GetMapping
-    public ResponseEntity<List<AutoClicker>> getAll() {
-        //målet senere er at databasen skal kobles opp og disse dataene skal komme inn automatisk
-        List<AutoClicker> autoClickers = new ArrayList<AutoClicker>(); // lager en arraylist med autoclickers
-        /*AutoClicker autoClicker = new AutoClicker(); // lager et autoclicker objekt
-        autoClicker.setId(0); // legger til verdier i objectet
-        autoClicker.setCost(15);
-        autoClicker.setCps(1);
-        autoClicker.setName("Nod Thoughtfully During Lectures");
-        autoClicker.setTitle("No one knows what you understood, but it looks impressive.");
-        autoClickers.add(autoClicker); // legger til autoclickeren i autoclick arrayen*/
-        return ResponseEntity.ok(autoClickers);
+    public List<AutoClicker> getAllAutoClickers() {
+        return repository.getAllAutoClickers();
     }
 
-    @PostMapping // Lag verdier (Create)
-    public ResponseEntity <AutoClicker> createAll(@RequestBody AutoClicker autoClicker){
-        return ResponseEntity.ok(autoClicker);
+    @GetMapping("/{id}")
+    public ResponseEntity<AutoClicker> getAutoClickerById(@PathVariable Long id) {
+        Optional<AutoClicker> autoclicker = repository.getAutoClickerById(id);
+        return autoclicker.map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
-    @PutMapping("/{id}") // Oppdater verdier (Update)
-    public ResponseEntity <AutoClicker> updateAll(@RequestBody AutoClicker autoClicker, @PathVariable int id){
-        autoClicker.setId(id);
-        return ResponseEntity.ok(autoClicker);
-
+    @PostMapping
+    public ResponseEntity<String> createAutoClicker(@RequestBody AutoClicker autoclicker) {
+        repository.createAutoClicker(autoclicker);
+        return ResponseEntity.ok("AutoClicker created successfully!");
     }
 
-    @DeleteMapping("/{id}") // Slett verdier (Delete)
-    public ResponseEntity<Void> deleteAll(@PathVariable int id){
-        return ResponseEntity.noContent().build();
+    @GetMapping("/test")
+    public String test(){
+        return("test created successfully!");
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<String> updateAutoClicker(
+            @PathVariable Long id, @RequestBody AutoClicker autoclicker) {
+        int updatedRows = repository.updateAutoClicker(id, autoclicker);
+        if (updatedRows > 0) {
+            return ResponseEntity.ok("AutoClicker updated successfully!");
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
 }

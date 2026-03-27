@@ -1,5 +1,5 @@
--- DROP TABLE upgrade CASCADE;
--- DROP TABLE auto_clicker CASCADE;
+DROP TABLE upgrade CASCADE;
+DROP TABLE auto_clicker CASCADE;
 
 CREATE TABLE upgrade (
     id SERIAL PRIMARY KEY,

@@ -38,6 +38,11 @@ public class UpgradeRepository {
         return jdbcTemplate.update(sql,upgrade.getName(),upgrade.getCost(),upgrade.getTitle(),upgrade.getCpsMulti(),upgrade.getClickMulti(),id);
     }
 
+    public void deleteUpgrade(Long id) {
+        String sql = "DELETE FROM upgrades WHERE id = ?";
+        jdbcTemplate.update(sql, id);
+    }
+
     public Optional<Upgrade> getUpgradeById(Long id) {
         //ikke lagt inn ennå
         return null;

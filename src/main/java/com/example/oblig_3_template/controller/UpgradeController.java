@@ -20,6 +20,11 @@ public class UpgradeController {
         this.repository = repository;
     }
 
+    @GetMapping
+    public List<Upgrade> getAllUpgrades() {
+        return repository.getAllUpgrades();
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Upgrade> getUpgradeById(@PathVariable Long id) {
         Optional<Upgrade> upgrade = repository.getUpgradeById(id);
@@ -27,8 +32,14 @@ public class UpgradeController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PostMapping
+    public ResponseEntity<String> createUpgrade(@RequestBody Upgrade upgrade) {
+        repository.createUpgrade(upgrade);
+        return ResponseEntity.ok("Upgrade created successfully!");
+    }
+
     @PutMapping("/{id}")
-    public ResponseEntity<String> updateEnhancement(
+    public ResponseEntity<String> updateUpgrade(
             @PathVariable Long id, @RequestBody Upgrade upgrade) {
         int updatedRows = repository.updateUpgrade(id, upgrade);
         if (updatedRows > 0) {
@@ -38,18 +49,28 @@ public class UpgradeController {
         }
     }
 
+<<<<<<< HEAD
 
 
 
 
 /* //kommentert ut midlertidig
+=======
+    @DeleteMapping("/{id}")// Slett verdier (Delete)
+    public ResponseEntity<String> deleteUpgrade(@PathVariable Long id){
+        repository.deleteUpgrade(id);
+        return ResponseEntity.ok("Upgrade succesfully deleted");
+    }
+
+>>>>>>> e7742570261207c75e2f3947ec7f1c7dac1e7753
     //TODO: full CRUD and Repository
     @GetMapping //Få verdier (READ)
     public ResponseEntity<List<Upgrade>> getAll() {
 
         //målet senere er at databasen skal kobles opp og disse dataene skal komme inn automatisk
         List<Upgrade> upgrades = new ArrayList<>(); // lager liste med upgrades
-        Upgrade upgrade = new Upgrade(); //lager en ny upgrade
+        //Upgrade upgrade = new Upgrade(); //lager en ny upgrade
+        /*
         upgrade.setId(0); // setter verdier 
         upgrade.setCost(1200);
         upgrade.setName("Mechanical Keyboard");
@@ -57,11 +78,9 @@ public class UpgradeController {
         upgrade.setCpsMulti(2);
         upgrade.setClickMulti(5);
         upgrades.add(upgrade); // legger upgraden til i upgrades
+        */
         return ResponseEntity.ok(upgrades);
     }
-    */
-/*
-    @DeleteMapping() // Slett verdier (Delete)
-*/
+
 
 }

@@ -7,6 +7,14 @@ public class AutoClicker {
     private int cps;
     private String title;
 
+    public AutoClicker(Integer id, String name, int cost, int cps, String title){
+        this.id = id;
+        this.name = name;
+        this.cost = cost;
+        this.cps = cps;
+        this.title = title;
+    }
+
     public Integer getId() {
         return id;
     }

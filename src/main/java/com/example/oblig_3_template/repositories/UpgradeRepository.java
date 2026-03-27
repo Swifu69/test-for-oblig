@@ -45,7 +45,6 @@ public class UpgradeRepository {
 
     public Optional<Upgrade> getUpgradeById(Long id) {
         String sql = "SELECT * FROM upgrade WHERE id = ?";
-        jdbcTemplate.update(sql, id);
         return jdbcTemplate.query(sql, upgradeRowMapper, id).stream().findFirst();
     }
 }

@@ -38,6 +38,11 @@ public class UpgradeController {
         return ResponseEntity.ok("Upgrade created successfully!");
     }
 
+    @GetMapping("/test")
+    public String test(){
+        return("test created successfully!");
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<String> updateUpgrade(
             @PathVariable Long id, @RequestBody Upgrade upgrade) {
@@ -56,13 +61,14 @@ public class UpgradeController {
     }
 
     //TODO: full CRUD and Repository
+     /*
     @GetMapping //Få verdier (READ)
     public ResponseEntity<List<Upgrade>> getAll() {
 
         //målet senere er at databasen skal kobles opp og disse dataene skal komme inn automatisk
         List<Upgrade> upgrades = new ArrayList<>(); // lager liste med upgrades
         //Upgrade upgrade = new Upgrade(); //lager en ny upgrade
-        /*
+
         upgrade.setId(0); // setter verdier 
         upgrade.setCost(1200);
         upgrade.setName("Mechanical Keyboard");
@@ -70,9 +76,9 @@ public class UpgradeController {
         upgrade.setCpsMulti(2);
         upgrade.setClickMulti(5);
         upgrades.add(upgrade); // legger upgraden til i upgrades
-        */
+
         return ResponseEntity.ok(upgrades);
     }
-
+     */
 
 }

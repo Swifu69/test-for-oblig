@@ -22,29 +22,30 @@ public class UpgradeRepository {
                     rs.getString("name"),
                     rs.getInt("cost"),
                     rs.getString("title"),
-                    rs.getDouble("cpsMulti"),
-                    rs.getDouble("clickMulti")
+                    rs.getDouble("cps_multi"),
+                    rs.getDouble("click_multi")
             );
     public List<Upgrade> getAllUpgrades(){
-        String sql = "SELECT * FROM upgrades";
+        String sql = "SELECT * FROM upgrade";
         return jdbcTemplate.query(sql,upgradeRowMapper);
     }
     public void createUpgrade(Upgrade upgrade){
-        String sql = "INSERT INTO upgrades(name,cost,title,cpsMulti,clickMulti) VALUES (?,?,?,?,?)";
+        String sql = "INSERT INTO upgrade(name,cost,title,cpsMulti,clickMulti) VALUES (?,?,?,?,?)";
         jdbcTemplate.update(sql,upgrade.getName(),upgrade.getCost(),upgrade.getTitle(),upgrade.getCpsMulti(),upgrade.getClickMulti());
     }
     public int updateUpgrade(Long id, Upgrade upgrade){
-        String sql = "UPDATE upgrades SET name =?,cost=?,title=?,cpsMulti=?,clickMulti=? WHERE id = ?";
+        String sql = "UPDATE upgrade SET name =?,cost=?,title=?,cpsMulti=?,clickMulti=? WHERE id = ?";
         return jdbcTemplate.update(sql,upgrade.getName(),upgrade.getCost(),upgrade.getTitle(),upgrade.getCpsMulti(),upgrade.getClickMulti(),id);
     }
 
     public void deleteUpgrade(Long id) {
-        String sql = "DELETE FROM upgrades WHERE id = ?";
+        String sql = "DELETE FROM upgrade WHERE id = ?";
         jdbcTemplate.update(sql, id);
     }
 
     public Optional<Upgrade> getUpgradeById(Long id) {
-        //ikke lagt inn ennå
-        return null;
+        String sql = "SELECT * FROM upgrade WHERE id = ?";
+        jdbcTemplate.update(sql, id);
+        return jdbcTemplate.query(sql, upgradeRowMapper, id).stream().findFirst();
     }
 }

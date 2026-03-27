@@ -24,9 +24,9 @@ INSERT INTO upgrade (name, cost, title, cps_multi, click_multi) VALUES
     ('Coffee Machine Loyalty Card', 50, 'One more stamp and the caffeine becomes legally permanent.', 1.2, 3),
     ('Ergonomic Wrist Rest', 200, 'Your wrists finally forgive you for that 12 page essay.', 2, 1.5),
     ('3 AM Motivation', 500, 'A sudden burst of productivity caused by panic.', 2, 5),
-    ('Firm Handshake with the Rector', 1000, 'A handshake so confident the administration assumes you belong here.', 5, 5),
-    ('Premium Coffee Beans', 1200, 'Expensive beans clearly produce smarter thoughts.', 2, 5),
-    ('Mechanical Keyboard', 1200, 'Not only are you productive, everyone within 10 meters knows it.', 5, 2);
+    ('Firm Handshake with the Rector', 10000, 'A handshake so confident the administration assumes you belong here.', 2, 2),
+    ('Premium Coffee Beans', 50000, 'Expensive beans clearly produce smarter thoughts.', 2, 2),
+    ('Mechanical Keyboard', 250000, 'Not only are you productive, everyone within 10 meters knows it.', 3, 2);
 
 
 -- Auto Clickers

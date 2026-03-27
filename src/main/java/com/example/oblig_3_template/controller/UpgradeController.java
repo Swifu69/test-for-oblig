@@ -39,7 +39,7 @@ public class UpgradeController {
     }
 
     @GetMapping("/test")
-    public String test(){
+    public String test() {
         return("test created successfully!");
     }
 

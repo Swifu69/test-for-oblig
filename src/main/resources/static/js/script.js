@@ -20,10 +20,10 @@ const gameState = {
     autoClickerAmounts: {}
 };
 
-function updateAutoClickers(){
+function updateAutoClickers() {
     autoclickerContainer.innerHTML = "";
 
-    autoclickers.forEach((clicker)=>{
+    autoclickers.forEach((clicker) => {
         const nrOwned = gameState.autoClickerAmounts[clicker.id]
         const cost = Math.floor(clicker.cost * Math.pow(purchaseAcc, nrOwned))
 
@@ -110,7 +110,7 @@ function updateTrackers() {
 function updateModifiers() {
     xpClickModifier = 1;
     xpAutoClickModifier = 1;
-    xpAutoClickerBasePerSecond =0;
+    xpAutoClickerBasePerSecond = 0;
 
     for (let upgrade of upgrades) {
         if (gameState.upgradesPurchased[upgrade.id]) {
@@ -119,17 +119,17 @@ function updateModifiers() {
         }
     }
 
-    for (let clicker of autoclickers){
+    for (let clicker of autoclickers) {
         xpAutoClickerBasePerSecond += clicker.cps * gameState.autoClickerAmounts[clicker.id]
     }
     xpAutoClickerPerSecond = xpAutoClickerBasePerSecond * xpAutoClickModifier;
 }
 
-function updateClickerImage(){
+function updateClickerImage() {
     //TODO: make the clicker image dynamically update based on how many xpAutoclicker per second in the game.
     // you can make your own images or you can use the resources in /img
 }
-function updateEverything(){
+function updateEverything() {
     updateModifiers()
     updateUpgrades()
     updateAutoClickers()
@@ -137,9 +137,10 @@ function updateEverything(){
     updateClickerImage()
 }
 
-async function init(){
-
+async function init() {
+    // henter json data vi poster/putter på den spesifikke adressen
     let responseUpg = await fetch(`${BASE_URL}upgrades`)
+
     upgrades = await responseUpg.json()
 
     let responseAC = await fetch(`${BASE_URL}autoclickers`)
@@ -155,7 +156,7 @@ async function init(){
         gameState.autoClickerAmounts[ac.id] = 0
     })
 
-    setInterval(function() {
+    setInterval(function () {
         xp += xpAutoClickerBasePerSecond * xpAutoClickModifier
         updateEverything()
     }, 1000)

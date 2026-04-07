@@ -130,17 +130,17 @@ function updateModifiers() {
 
 function updateClickerImage() {
     if (xpAutoClickerPerSecond >= 10000000) {
-        studentImg.src = "../img/Prof.png"
+        studentImg.src = "img/Prof.png"
     } else if (xpAutoClickerPerSecond >= 1000000) {
-        studentImg.src = "../img/Graduate.png"
+        studentImg.src = "img/Graduate.png"
     } else if (xpAutoClickerPerSecond >= 100000) {
-        studentImg.src = "../img/studentCoffeeDev.png"
+        studentImg.src = "img/studentCoffeeDev.png"
     } else if (xpAutoClickerPerSecond >= 10000) {
-        studentImg.src = "../img/studentCoffeeCoffee.png"
+        studentImg.src = "img/studentCoffeeCoffee.png"
     } else if (xpAutoClickerPerSecond >= 1000) {
-        studentImg.src = "../img/studentCoffee.png"
+        studentImg.src = "img/studentCoffee.png"
     } else {
-        studentImg.src = "../img/studentCoffee.png"
+        studentImg.src = "img/studentCoffee.png"
     }
 }
 function updateEverything() {
